@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('auth.admin.adminLayout')
 
 @section('content')
     <div class="container">
@@ -14,8 +14,19 @@
                             </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
+                        {{ __('You are logged in!') }} as {{ admin()->name }}
+
+                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                     </div>
+
                 </div>
             </div>
         </div>
